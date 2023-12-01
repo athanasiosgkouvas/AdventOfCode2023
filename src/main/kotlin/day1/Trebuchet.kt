@@ -2,12 +2,12 @@ package day1
 
 import java.io.File
 
-fun main(args: Array<String>) {
+fun main() {
     val strings: List<String> = File("src/main/resources/day1input.txt").useLines { it.toList() }
     var sum = 0
 
     strings.forEach { string->
-        val numbers = string.getRealDigits()
+        val numbers = string.getRealDigits() //string.filter{ it.isDigits() }.toList() for first question
         val n = "${numbers.first()}${numbers.last()}"
         sum += n.toInt()
     }
