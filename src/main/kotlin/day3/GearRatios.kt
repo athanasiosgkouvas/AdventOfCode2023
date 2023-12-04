@@ -12,7 +12,7 @@ fun main() {
     println(part2(input))
 }
 
-fun Char.isSymbol(): Boolean {
+private fun Char.isSymbol(): Boolean {
     val symbols = listOf(
         '!', '"', '#', '$', '%', '&', '\'', '(', ')', '*', '+',
         ',', '-', '/', ':', ';', '<', '=', '>', '?', '@',
@@ -22,7 +22,7 @@ fun Char.isSymbol(): Boolean {
     return symbols.contains(this)
 }
 
-fun part1(input: List<String>): Int {
+private fun part1(input: List<String>): Int {
     var sum = 0
     input.forEachIndexed { i, s ->
         var number = ""
@@ -142,7 +142,7 @@ fun part1(input: List<String>): Int {
     return sum
 }
 
-fun part2(input: List<String>): Long {
+private fun part2(input: List<String>): Long {
     val starsIndexes = mutableListOf<Pair<Int, Int>>()
     val numbersIndexes = mutableListOf<Pair<Pair<Int, Int>, Pair<Int, Int>>>()
 
@@ -170,7 +170,7 @@ fun part2(input: List<String>): Long {
     return calculateProductOfAdjacentNumbers(input, starsIndexes, numbersIndexes)
 }
 
-fun calculateProductOfAdjacentNumbers(
+private fun calculateProductOfAdjacentNumbers(
     table: List<String>,
     starPositions: List<Pair<Int, Int>>,
     numberRanges: List<Pair<Pair<Int, Int>, Pair<Int, Int>>>
@@ -200,7 +200,7 @@ fun calculateProductOfAdjacentNumbers(
     return productsSum
 }
 
-fun isAdjacent(starRow: Int, starCol: Int, numStart: Pair<Int, Int>, numEnd: Pair<Int, Int>) =
+private fun isAdjacent(starRow: Int, starCol: Int, numStart: Pair<Int, Int>, numEnd: Pair<Int, Int>) =
             (starRow - 1 == numStart.first && starCol in (numStart.second - 1..numEnd.second + 1)) ||
             (starRow == numStart.first && (starCol - 1 == numEnd.second || starCol + 1 == numStart.second)) ||
             (starRow + 1 == numStart.first && starCol in (numStart.second - 1..numEnd.second + 1))

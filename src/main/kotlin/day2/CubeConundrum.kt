@@ -52,7 +52,7 @@ fun main() {
 
 }
 
-fun List<String>.toGames(): List<Game> {
+private fun List<String>.toGames(): List<Game> {
     return this.map { str ->
         val gameId = str.substringBefore(':').filter { it.isDigit() }.map { it.digitToInt() }
         var gameIdStr = ""
@@ -72,7 +72,7 @@ fun List<String>.toGames(): List<Game> {
     }
 }
 
-fun List<String>.toRandomPicks(): List<RandomPick> {
+private fun List<String>.toRandomPicks(): List<RandomPick> {
     return this.map { str ->
         val colorPicks = str.split(",").map { it.trim() }
 
@@ -96,12 +96,12 @@ fun List<String>.toRandomPicks(): List<RandomPick> {
     }
 }
 
-data class Game(
+private data class Game(
     val id: Int,
     val randomPicks: List<RandomPick>
 )
 
-data class RandomPick(
+private data class RandomPick(
     val reds: Int = 0,
     val greens: Int = 0,
     val blues: Int = 0,
